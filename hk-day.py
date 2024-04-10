@@ -1,5 +1,6 @@
 import pandas as pd
 from datetime import datetime
+
 import os
 import json
 from scipy.spatial.distance import cosine

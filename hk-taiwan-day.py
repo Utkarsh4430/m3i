@@ -115,6 +115,7 @@ sum_array = []
 plot_values = {}
 for i in tqdm(df2):
     for j in df:
+
         if i[:10]==j[:10]:
             # print(i[:10])
             temp = datetime(int(i[:4]), int(i[5:7]), int(i[8:10]))
