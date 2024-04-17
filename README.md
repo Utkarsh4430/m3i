@@ -3,7 +3,7 @@
 
 # Media Campaign Analysis Toolkit
 
-This toolkit is designed to assist in the analysis and comparison of media files distributed across various campaigns. It includes utilities for extracting media files, generating embeddings, and computing similarities between campaigns on a day-wise basis or through average clip model embeddings.
+This toolkit is designed to assist in the analysis and comparison of media files distributed across various campaigns. It includes utilities for extracting media files, generating embeddings, and computing similarities between campaigns on a day-wise basis or through average clip/blip/convnext model embeddings.
 
 ## Features
 
@@ -20,11 +20,7 @@ Clone this repository to your local machine using:
 git clone <repository-url>
 ```
 
-Ensure you have Python 3.6 or later installed. Install all required dependencies by running:
-
-```sh
-pip install -r requirements.txt
-```
+Ensure you have Python 3.8 or later installed.
 
 ## Usage
 
@@ -33,7 +29,7 @@ pip install -r requirements.txt
    To extract media files from zipped archives and generate a list of all JPEG and PNG files, run:
 
    ```sh
-   python extract.py <path-to-zip-files>
+   python extract.py
    ```
 
    This will create a `filenames.txt` file containing the paths to all extracted JPEG and PNG files.
@@ -43,17 +39,38 @@ pip install -r requirements.txt
    Before calculating similarities, you need to generate embeddings for your images:
 
    ```sh
-   python run.py
+   python run_clip.py
+   ```
+
+   or
+
+   ```sh
+   python run_blip2.py
+   ```
+
+   or
+
+   ```sh
+   python run_convnext.py
    ```
 
    Make sure `filenameslist.txt` contains the paths to the images you wish to process.
 
-3. **Campaign Similarity Analysis**
+3. **KMeans on campaigns**
 
-   To calculate the similarity between the average clip model embeddings of images from two campaigns, run:
+    Creating Kmeans clusters for a given campaign
+
+    ```sh
+        python taiwan_kmeans.py
+    ```
+
+
+4. **Campaign Similarity Analysis**
+
+   To calculate the similarity between the average model embeddings of images from two campaigns, run:
 
    ```sh
-   python campaign-smi <campaign-1-directory> <campaign-2-directory>
+   python campaign-sim.py
    ```
 
 4. **Day-wise Similarity Matrix**
@@ -61,5 +78,5 @@ pip install -r requirements.txt
    For computing a day-wise similarity matrix between two campaigns, use:
 
    ```sh
-   python hk-day.py <campaign-1-directory> <campaign-2-directory>
+   python hk-day.py
    ```
